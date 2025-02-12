@@ -43,7 +43,7 @@
     <div class="font-semibold text-left">
       Microlab Stick, Developed by Microlab Robotics
     </div>
-    <img src="./logo-light.png" class="h-full" />
+    <img src="logo-light.png" class="h-full" />
   </div>
 </main>
 
