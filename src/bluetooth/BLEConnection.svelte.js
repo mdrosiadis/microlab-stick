@@ -1,7 +1,3 @@
-// const userMac = "ef:ef:59:48:3b:29"; // Replace with the MAC address of the device
-//const throttleJoy = new JoyStick('throttle-joy');
-//const steerJoy = new JoyStick('steer-joy');
-
 const characteristicUUID = "6e400003-b5a3-f393-e0a9-e50e24dcca9e"; // Characteristic UUID
 const serviceID = "6e400001-b5a3-f393-e0a9-e50e24dcca9e"; // Service UUID
 
@@ -19,7 +15,7 @@ async function connectToDevice() {
     bluetoothDevice = await navigator.bluetooth.requestDevice({
       acceptAllDevices: true,
       //filters: [{ services: [serviceID] }],
-      //optionalServices: [serviceID]
+      optionalServices: [serviceID]
     });
 
     // Connect to the GATT server
