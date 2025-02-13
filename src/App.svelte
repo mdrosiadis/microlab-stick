@@ -1,12 +1,27 @@
 <script>
   import "./app.css";
   import BluetoothConnect from "svelte-material-icons/BluetoothConnect.svelte";
+  import Fullscreen from "svelte-material-icons/Fullscreen.svelte";
+  import FullscreenExit from "svelte-material-icons/FullscreenExit.svelte";
 
   import { bluetoothAccessor, connectToDevice, disconnectFromDevice } from "./bluetooth/BLEConnection.svelte.js";
   import Controller from "./lib/controller/Controller.svelte";
   import Joystick from "./lib/joystick/Joystick.svelte";
 
+  let isFullScreen = $state(false);
+  function toggleFullscreen() {
+    let elem = document.documentElement;
 
+    if (!document.fullscreenElement) {
+      elem.requestFullscreen()
+        .then(() => { isFullScreen = true; })
+        .catch((err) => {
+      });
+    } else {
+      document.exitFullscreen();
+      isFullScreen = false;
+    }
+  }
 </script>
 
 <main class="w-screen h-screen flex flex-col">
@@ -24,12 +39,21 @@
       </div>
     </div>
     <!--- <img src="public/logo.png" /> --->
+    <div class="flex gap-1">
     <button class="flex items-center gap-2 px-2 py-1 rounded-xl bg-neutral-700 " on:click={() => { bluetoothAccessor.bluetooth === null ? connectToDevice() : disconnectFromDevice() }} >
         {bluetoothAccessor.bluetooth === null 
         ? `Connect`
         : 'Disconnect' }
       <BluetoothConnect size={"2em"} />
     </button>
+    <button class ="flex items-center rounded-xl p-1 bg-neutral-700" on:click={toggleFullscreen} >
+      {#if !isFullScreen }
+        <Fullscreen size={"2em"} />
+      {:else}
+        <FullscreenExit size={"2em"} />
+      {/if}
+    </button>
+    </div>
   </div>
 
   <Controller >
