@@ -1,6 +1,8 @@
-const characteristicUUID = "6e400003-b5a3-f393-e0a9-e50e24dcca9e"; // Characteristic UUID
-const serviceID = "6e400001-b5a3-f393-e0a9-e50e24dcca9e"; // Service UUID
+// const serviceID = "6e400001-b5a3-f393-e0a9-e50e24dcca9e"; // Service UUID
+// const characteristicUUID = "6e400003-b5a3-f393-e0a9-e50e24dcca9e"; // Characteristic UUID
 
+const serviceID =  "b212f5e6-2679-30da-a26e-0273b6043849";
+const characteristicUUID = "b212f5e6-2679-30da-a26e-0273b6043849";
 
 let bluetoothDevice;
 let bluetoothCharacteristic;
@@ -53,29 +55,5 @@ function disconnectFromDevice() {
 }
 
 
-function sendCommand(command) {
-  if (bluetoothCharacteristic) {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(command + ' '); // Add space at the end as requested
-    bluetoothCharacteristic.writeValue(data);
-    console.log(`Sent command: ${command}`);
-  } else {
-    console.log('No Bluetooth connection established.');
-  }
-}
 
-// Event listeners for joystick buttons
-/*
-document.getElementById('up').addEventListener('click', () => sendCommand('F'));
-document.getElementById('down').addEventListener('click', () => sendCommand('B'));
-document.getElementById('left').addEventListener('click', () => sendCommand('L'));
-document.getElementById('right').addEventListener('click', () => sendCommand('R'));
-*/
-
-// Automatically connect to device on page load
-// window.onload = () => {
-//   connectToDevice();
-// };
-//
-//
 export { bluetoothAccessor, connectToDevice, disconnectFromDevice };
