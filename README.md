@@ -9,5 +9,9 @@ your browser.
 
 Program your micro:bit using [Microsoft Makecode](https://makecode.microbit.org).
 
-You must enable the `bluetooth` extension, and select `No Pairing required` in your project settings.
+Use the [MicroLab Stick](https://github.com/mdrosiadis/pxt-MicroLab-Stick) extension to control
+your robot.
+
+It is recommended to select `No Pairing required` in your project settings.
+
 
